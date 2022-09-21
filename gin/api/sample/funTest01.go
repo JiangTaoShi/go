@@ -6,17 +6,23 @@ import (
 )
 
 type Test01Request struct {
-	Name string `json:"name"`
+	Name string `json:"name"binding:"required"`
 }
 
 // @Summary Test01
 // @Description Test01
-// @Tags middleman
+// @Tags sample
 // @Produce  json
-// @Param body body Test01Request true "content"
+// @Param body body sample.Test01Request true "content"
 // @Success 200 {string} 12345
 // @Router /test01 [post]
 func (*SampleService) Test01(c *gin.Context) {
-	c.String(http.StatusOK, "1111", "")
+	var request Test01Request
+	err := c.ShouldBindJSON(request)
+	if err != nil {
+		c.String(http.StatusBadRequest, "", err.Error())
+		return
+	}
+	c.String(http.StatusOK, "", "1111")
 	return
 }
