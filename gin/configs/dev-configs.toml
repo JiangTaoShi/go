@@ -1,0 +1,9 @@
+[language]
+ local = "zh-cn"
+[app]
+  name = "go.gin"
+[server]
+  runMode = "debug"
+  httpPort = 9081
+  readTimeout = 60
+  writeTimeout = 60
