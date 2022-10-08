@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"os/exec"
 	"path/filepath"
 	"runtime"
@@ -10,37 +11,37 @@ import (
 
 func main() {
 
-	//imagePath, _ := filepath.Abs("./images/5.jpg")
-	//file, err := os.Open(imagePath)
-	//if err != nil {
-	//	fmt.Println(err)
-	//	return
-	//}
-	//defer file.Close()
-	//fileinfo, err := file.Stat()
-	//if err != nil {
-	//	fmt.Println(err)
-	//	return
-	//}
-	//filesize := fileinfo.Size()
-	//buffer := make([]byte, filesize)
-	//file.Read(buffer)
-	//
-	//for i := 151; i <= 180; i++ {
-	//	newImagePath, _ := filepath.Abs(fmt.Sprintf("./images/%s.jpg", fmt.Sprintf("%03d", i)))
-	//	newFile, err := os.Create(newImagePath)
-	//	if err != nil {
-	//		panic(err)
-	//	}
-	//	newFile.Write(buffer)
-	//	newFile.Close()
-	//}
+	imagePath, _ := filepath.Abs("./images/5.jpg")
+	file, err := os.Open(imagePath)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer file.Close()
+	fileinfo, err := file.Stat()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	filesize := fileinfo.Size()
+	buffer := make([]byte, filesize)
+	file.Read(buffer)
 
-	path1, _ := filepath.Abs("./images")
-	path2, _ := filepath.Abs("./images2")
-	fmt.Println(path1)
-	fmt.Println(path2)
-	copyDir(path1, path2)
+	for i := 61; i <= 90; i++ {
+		newImagePath, _ := filepath.Abs(fmt.Sprintf("./images2/%s.jpg", fmt.Sprintf("%03d", i)))
+		newFile, err := os.Create(newImagePath)
+		if err != nil {
+			panic(err)
+		}
+		newFile.Write(buffer)
+		newFile.Close()
+	}
+
+	//path1, _ := filepath.Abs("./images")
+	//path2, _ := filepath.Abs("./images2")
+	//fmt.Println(path1)
+	//fmt.Println(path2)
+	//copyDir(path1, path2)
 }
 
 func FormatPath(s string) string {

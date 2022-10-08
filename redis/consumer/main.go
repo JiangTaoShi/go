@@ -5,7 +5,7 @@ import (
 	"crypto/rand"
 	"fmt"
 	"github.com/JiangTaoShi/go/redis/stream"
-	"github.com/go-redis/redis/v9"
+	"github.com/go-redis/redis/v8"
 	"log"
 )
 
@@ -31,6 +31,8 @@ func main() {
 	uuid := fmt.Sprintf("%x-%x-%x-%x-%x",
 		b[0:4], b[4:6], b[6:8], b[8:10], b[10:])
 
+	fmt.Println("start success" + uuid)
+
 	consumer, err := stream.NewConsumer(&stream.ConsumerOptions{
 		RedisClient: RedisClient,
 		Stream:      "test-stream-01",
@@ -43,18 +45,20 @@ func main() {
 	}
 	consumer.CreateGroupMkStream()
 	for {
-		entities, err := consumer.Poll()
+		ctx := context.Background()
+		entities, err := consumer.Poll(ctx)
 		if err != nil {
 			fmt.Println(err)
 		}
 		//TODO
-		for i := 0; i < len(entities[0].Messages); i++ {
-			messageId := entities[0].Messages[i].ID
-			values := entities[0].Messages[i].Values
-			fmt.Println(values)
-			//ACK
-			consumer.Ack(messageId)
+		if entities != nil {
+			for i := 0; i < len(entities[0].Messages); i++ {
+				messageId := entities[0].Messages[i].ID
+				values := entities[0].Messages[i].Values
+				fmt.Println(values)
+				//ACK
+				consumer.Ack(ctx, messageId)
+			}
 		}
 	}
-	fmt.Println("start ing")
 }

@@ -2,7 +2,7 @@ package stream
 
 import (
 	"context"
-	"github.com/go-redis/redis/v9"
+	"github.com/go-redis/redis/v8"
 	"log"
 )
 
@@ -25,10 +25,9 @@ type Consumer struct {
 }
 
 //拉取消息
-func (c *Consumer) Poll() ([]redis.XStream, error) {
+func (c *Consumer) Poll(context context.Context) ([]redis.XStream, error) {
 	option := c.options
-	ctx := context.Background()
-	return option.RedisClient.XReadGroup(ctx, &redis.XReadGroupArgs{
+	return option.RedisClient.XReadGroup(context, &redis.XReadGroupArgs{
 		Group:    option.GroupName,
 		Consumer: option.Consumer,
 		Streams:  []string{option.Stream, ">"},
@@ -39,10 +38,9 @@ func (c *Consumer) Poll() ([]redis.XStream, error) {
 }
 
 //确认消息
-func (c *Consumer) Ack(messageId string) (int64, error) {
+func (c *Consumer) Ack(context context.Context, messageId string) (int64, error) {
 	option := c.options
-	ctx := context.Background()
-	return option.RedisClient.XAck(ctx, option.Stream, option.GroupName, messageId).Result()
+	return option.RedisClient.XAck(context, option.Stream, option.GroupName, messageId).Result()
 }
 
 //创建
