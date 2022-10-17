@@ -35,8 +35,8 @@ func main() {
 
 	consumer, err := stream.NewConsumer(&stream.ConsumerOptions{
 		RedisClient: RedisClient,
-		Stream:      "test-stream-01",
-		GroupName:   "test-stream-01-group",
+		Stream:      "CustomerStream6",
+		GroupName:   "CustomerStreamGroup",
 		Consumer:    uuid,
 		Start:       "0",
 	})
@@ -56,6 +56,8 @@ func main() {
 				messageId := entities[0].Messages[i].ID
 				values := entities[0].Messages[i].Values
 				fmt.Println(values)
+				data := values["222"]
+				fmt.Println(fmt.Sprintf("%+v", data))
 				//ACK
 				consumer.Ack(ctx, messageId)
 			}

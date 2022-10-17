@@ -2,6 +2,7 @@ package stream
 
 import (
 	"context"
+	"fmt"
 	"github.com/go-redis/redis/v8"
 )
 
@@ -28,6 +29,7 @@ func (p *Producer) Enqueue(msg *Message) error {
 	}
 	id, err := p.options.RedisClient.XAdd(ctx, args).Result()
 	if err != nil {
+		fmt.Println(err)
 		return err
 	}
 	msg.ID = id
