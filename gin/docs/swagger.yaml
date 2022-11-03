@@ -1,0 +1,32 @@
+definitions:
+  sample.Test01Request:
+    properties:
+      name:
+        type: string
+    required:
+    - name
+    type: object
+info:
+  contact: {}
+paths:
+  /test01:
+    post:
+      description: Test01
+      parameters:
+      - description: content
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/sample.Test01Request'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Test01
+      tags:
+      - sample
+swagger: "2.0"

@@ -1,0 +1,52 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/test01": {
+            "post": {
+                "description": "Test01",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "sample"
+                ],
+                "summary": "Test01",
+                "parameters": [
+                    {
+                        "description": "content",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/sample.Test01Request"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "sample.Test01Request": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
