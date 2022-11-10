@@ -13,9 +13,13 @@ func main() {
 	// u.Host = "tunshu.oss-cn-zhangjiakou-internal.aliyuncs.com"
 	// fmt.Println(u.String())
 
-	trHaiCoder := "服务经理：{$}"
-	test := "张三"
-	test = strings.Replace(trHaiCoder, "{$}", test, 1)
-	fmt.Println("StrReplace =", test)
+	// trHaiCoder := "服务经理：{$}"
+	// test := "张三"
+	// test = strings.Replace(trHaiCoder, "{$}", test, 1)
+	// fmt.Println("StrReplace =", test)
+
+	str := ""
+	fmt.Println(str)
+	fmt.Println(strings.TrimSpace(str))
 
 }
