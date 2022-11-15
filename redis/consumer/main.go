@@ -14,8 +14,8 @@ import (
 func main() {
 
 	RedisClient := redis.NewClient(&redis.Options{
-		Addr:     fmt.Sprintf("%s:%s", "r-8vbkkwnduxmnij29ga.redis.zhangbei.rds.aliyuncs.com", "6379"),
-		Password: "rPHhYj8Xg6cdAOm9eFLu",
+		Addr:     fmt.Sprintf("%s:%s", "", "6379"),
+		Password: "",
 		DB:       2,
 		PoolSize: 100,
 	})
@@ -25,16 +25,16 @@ func main() {
 		fmt.Println(err)
 	}
 	read := Read{
-		User: "payfun_taikang_http",
-		Pass: "RMuEyi5jBoPfYC2c1F6J",
-		Addr: "rm-8vb6z1f70tq78526n.mysql.zhangbei.rds.aliyuncs.com:3306",
+		User: "",
+		Pass: "",
+		Addr: "",
 		Name: "taikang",
 	}
 	dbObj, err := dbConnect(read.User, read.Pass, read.Addr, read.Name)
 	if err != nil {
 		fmt.Println(err)
 	}
-	msgs, err := RedisClient.XRangeN(ctx, "ConsumerMVStream", "-", "+", 1000).Result()
+	msgs, err := RedisClient.XRangeN(ctx, "ConsumerMVStream", "-", "+", 1000000).Result()
 	if err != nil {
 		fmt.Println(err)
 	}

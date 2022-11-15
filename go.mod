@@ -8,9 +8,11 @@ require (
 	github.com/alibabacloud-go/tea v1.1.19
 	github.com/alibabacloud-go/tea-console v1.0.0
 	github.com/alibabacloud-go/tea-utils/v2 v2.0.0
+	github.com/boombuler/barcode v1.0.0
 	github.com/dsoprea/go-exif/v2 v2.0.0-20221012082141-d21ac8e2de85
 	github.com/dsoprea/go-jpeg-image-structure v0.0.0-20221012074422-4f3f7e934102
 	github.com/go-redis/redis/v8 v8.11.5
+	github.com/go-resty/resty/v2 v2.7.0
 	github.com/jung-kurt/gofpdf v1.16.2
 	github.com/pdfcpu/pdfcpu v0.3.13
 	github.com/pixiv/go-libjpeg v0.0.0-20190822045933-3da21a74767d
