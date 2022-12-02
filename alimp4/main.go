@@ -93,7 +93,7 @@ func _main(args []*string) (_err error) {
 	clipsParamJson, _ := json.Marshal(clipsParam)
 
 	userData := UserData{
-		NotifyAddress: "https://api.t.dev.pay.fun/taikang/customer/mv_notify",
+		NotifyAddress: "ht\\",
 	}
 	userDataJson, _ := json.Marshal(userData)
 
