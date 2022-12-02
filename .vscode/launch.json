@@ -5,6 +5,26 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "rabbitmq-pub",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceRoot}/rabbitmq/publish/main.go",
+            "cwd": "${workspaceRoot}/rabbitmq/publish",
+            "args": [
+            ]
+        },
+        {
+            "name": "consumer",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceRoot}/redis/consumer/main.go",
+            "cwd": "${workspaceRoot}/redis/consumer",
+            "args": [
+            ]
+        },
+        {
             "name": "pdfcpu",
             "type": "go",
             "request": "launch",

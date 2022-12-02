@@ -16,6 +16,7 @@ require (
 	github.com/jung-kurt/gofpdf v1.16.2
 	github.com/pdfcpu/pdfcpu v0.3.13
 	github.com/pixiv/go-libjpeg v0.0.0-20190822045933-3da21a74767d
+	github.com/rabbitmq/amqp091-go v1.5.0
 	github.com/signintech/gopdf v0.15.0
 	gorm.io/driver/mysql v1.4.3
 	gorm.io/gorm v1.24.0

@@ -4,14 +4,15 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+
 	"github.com/JiangTaoShi/go/redis/stream"
 	"github.com/go-redis/redis/v8"
 )
 
 func main() {
 	RedisClient := redis.NewClient(&redis.Options{
-		Addr:     fmt.Sprintf("%s:%s", "39.99.174.39", "7379"),
-		Password: "pay.Media@2020#redis",
+		Addr:     fmt.Sprintf("%s:%s", "", ""),
+		Password: "",
 		DB:       2,
 		PoolSize: 100,
 	})

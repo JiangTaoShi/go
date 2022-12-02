@@ -14,10 +14,11 @@ import (
 func main() {
 
 	RedisClient := redis.NewClient(&redis.Options{
-		Addr:     fmt.Sprintf("%s:%s", "", "6379"),
-		Password: "",
-		DB:       2,
-		PoolSize: 100,
+		Addr:        fmt.Sprintf("%s:%s", "", "6379"),
+		Password:    "rPHhYj8Xg6cdAOm9eFLu",
+		DB:          2,
+		PoolSize:    100,
+		ReadTimeout: -1,
 	})
 	ctx := context.Background()
 	_, err := RedisClient.Ping(ctx).Result()
@@ -39,7 +40,7 @@ func main() {
 		fmt.Println(err)
 	}
 
-	for _, msg := range msgs {
+	for index, msg := range msgs {
 		values := msg.Values
 		templateId := fmt.Sprintf("%v", values["TemplateId"])
 		orderId := fmt.Sprintf("%v", values["OrderId"])
@@ -62,6 +63,8 @@ func main() {
 		if err != nil {
 			fmt.Println(err)
 		}
+		fmt.Printf("%d suceesee", index)
+
 	}
 
 	// b := make([]byte, 16)
@@ -119,7 +122,7 @@ type TempOrderTemplate struct {
 }
 
 func (*TempOrderTemplate) TableName() string {
-	return "temp_20221031_order_template"
+	return "20221122_order_template_images"
 }
 
 type Read struct {

@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
 	var list []entity1
@@ -38,6 +41,15 @@ func main() {
 	// list = append(list, "1")
 	// fmt.Println(cap(list))
 	// fmt.Println(len(list))
+
+	// str := fmt.Sprintf(" AND order.order_id='%%%s%%'", "093840394")
+	// fmt.Println(str)
+
+	t := time.Now()
+	fmt.Println(t.Weekday().String())
+
+	i := 101 / 10
+	fmt.Println(i)
 
 }
 
