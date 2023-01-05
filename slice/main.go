@@ -48,8 +48,16 @@ func main() {
 	t := time.Now()
 	fmt.Println(t.Weekday().String())
 
-	i := 101 / 10
+	// i := 101 / 10
+	// fmt.Println(i)
+
+	i := new(int)
 	fmt.Println(i)
+
+	//make(chan)
+
+	dtime, _ := time.Parse("2006-01-02", "2006-01-03")
+	fmt.Println(dtime.Format("01-02"))
 
 }
 
